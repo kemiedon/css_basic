@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RWD 名片範例（簡化版）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── 1. 全域重設（Box Model）──────────────────── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── 2. body：頁面置中（Flex）─────────────────── */
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #eef1ff;
+      color: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    /* ── 3. .container：限制最大寬度（Box Model）──── */
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    /* ── 4. .card：名片容器（Flex 直向 → 橫向）────── */
+    .card {
+      display: flex;
+      flex-direction: column;     /* 手機：上下堆疊 */
+      border-radius: 20px;        /* Box Model：圓角 */
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);  /* Box Model：陰影 */
+    }
+
+    /* ── 5. .brand：左側品牌區（Flex 直向）─────────── */
+    .logo{
+        width: 80px;
+        height: 80px;
+        margin: 16px auto;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    .logo img{
+        width: 100%;
+    }
+    .brand {
+      background-color: #4f46e5;
+      color: #ffffff;
+      padding: 32px;              /* Box Model：內距 */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand h1 {
+      font-size: 28px;
+      line-height: 1.3;
+    }
+
+    .brand p {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+
+    /* ── 6. .info：右側資訊區（Flex 直向）──────────── */
+    .info {
+      background-color: #ffffff;
+      padding: 32px;              /* Box Model：內距 */
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info h2 {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      color: #4f46e5;
+      font-weight: 700;
+    }
+
+    .summary {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    /* ── 7. .details：聯絡清單（Flex 橫向排列）──────── */
+    .details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .details li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 12px;         /* Box Model：內距 */
+      border-bottom: 1px solid #e2e8f0;  /* Box Model：邊框 */
+    }
+
+    .details strong {
+      width: 48px;
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    .details a {
+      color: #0f172a;
+      text-decoration: none;
+    }
+
+    .details a:hover {
+      color: #4f46e5;
+    }
+
+    /* ── 8. .tags：標籤（Flex 自動換行）─────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tags span {
+      padding: 6px 14px;          /* Box Model：內距 */
+      border-radius: 999px;       /* Box Model：膠囊圓角 */
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 700;
+    }
+
+    /* ── 9. .actions：按鈕區（Flex）─────────────────── */
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;         /* Box Model：內距 */
+      border-radius: 999px;       /* Box Model：膠囊圓角 */
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background-color: #4f46e5;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: #eef2ff;
+      color: #4f46e5;
+      border: 1px solid #c7d2fe;  /* Box Model：邊框 */
+    }
+
+    /* ── 10. RWD Media Query：平板以上橫向排列 ──────── */
+    @media (min-width: 768px) {
+      .card {
+        flex-direction: row;      /* 改成橫向 */
+      }
+
+      .brand {
+        width: 320px;             /* 左欄固定寬度 */
+      }
+
+      .info {
+        flex: 1;                  /* 右欄佔滿剩餘空間 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="container">
+    <div class="card">
+
+      <!-- 左側品牌區 -->
+      <div class="brand">
+        <div class="logo">
+            <img src="imgs/device.svg" alt="MacroViz Logo">
+        </div>
+        <h1>廣瞻互動媒體<br>MacroViz</h1>
+        <p>專注互動媒體、品牌視覺與前端整合，讓品牌在手機與平板都清楚呈現。</p>
+      </div>
+
+      <!-- 右側資訊區 -->
+      <div class="info">
+        <header>
+          <h2>林若亞</h2>
+          <p class="role">品牌設計總監 / Brand Director</p>
+        </header>
+
+        <p class="summary">擁有超過十年的品牌設計與視覺整合經驗，擅長將使用者需求轉化為具備美感與功能性的設計方案，曾帶領團隊為多個國際品牌打造數位轉型視覺體系。</p>
+
+        <ul class="details">
+          <li>
+            <strong>電話</strong>
+            <span>0928-617-245</span>
+          </li>
+          <li>
+            <strong>Email</strong>
+            <a href="mailto:hello@macroviz.tw">hello@macroviz.tw</a>
+          </li>
+          <li>
+            <strong>地址</strong>
+            <span>Taichung, Taiwan</span>
+          </li>
+        </ul>
+
+        <div class="tags">
+          <span>互動設計</span>
+          <span>品牌網站</span>
+          <span>前端整合</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:hello@macroviz.tw">聯絡我</a>
+          <a class="btn btn-secondary" href="#">作品集</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
