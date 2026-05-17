@@ -11,5 +11,6 @@
         "statusBar.debuggingForeground": "#FEF9F9",
         "statusBar.noFolderBackground": "#A02C18",
         "statusBar.noFolderForeground": "#FEF9F9"
-    }
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": false
 }

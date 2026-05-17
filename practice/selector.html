@@ -7,16 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selector選擇器練習</title>
     <style>
-        .parent > p {
-            color: red;
+        #box > p{
+            color: brown;
         }
-        .ancestor p {
-            color: blue;
+        ul > li{
+            color: red;
+            text-decoration: underline;
+        }
+        .item{
+            font-size: 24px;
+        }
+        input[type="text"]{
+            font-size: 20px;
+            padding: 10px; 
+            border: 1px solid #3a17d8;
+            border-radius: 10px;
+        }
+        input[type="radio"]{
+            width: 40px;
+            height: 40px;
+        }
+        .item, h1, #box{
+            color: green;
         }
     </style>
 </head>
 
 <body>
+    <!-- test -->
     <h1>這是H1標題</h1>
     <div id="box">
         <p>這是BOX的內容1</p>
